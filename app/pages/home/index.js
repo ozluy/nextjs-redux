@@ -82,19 +82,20 @@ const HomePage = ({ repos, error, loading, getRepos }) => (
     <List>
       {repos && repos.map(repo => <ListItem key={repo.id} repo={repo} />)}
     </List>
-    {error && <Message>Something went wrong!</Message>}
+    {error && <Message>{error.message}</Message>}
   </Wrapper>
 )
 
 HomePage.defaultProps = {
   loading: false,
+  repos: null,
   error: null,
   getRepos: {},
 }
 HomePage.propTypes = {
-  repos: PropTypes.array.isRequired,
+  repos: PropTypes.array,
   loading: PropTypes.bool,
-  error: PropTypes.object,
+  error: PropTypes.string,
   getRepos: PropTypes.func,
 }
 

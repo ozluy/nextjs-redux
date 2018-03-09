@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 const Message = styled.p`
-  color: ${props => 'red' || props.color};
+  color: ${props => props.color || 'red'};
   margin: 15px 0;
 `
 
