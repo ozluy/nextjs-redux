@@ -1,9 +1,9 @@
 import { call, put, takeLatest } from 'redux-saga/effects'
-import { fetchRepos, fetchReposSuccess, fetchReposFail } from './actions'
+import { fetchReposSuccess, fetchReposFail } from './actions'
 import { API_URL, FETCH_REPOS } from './constants'
 import request from 'common/request'
 
-export function* fetchReposRequest(action) {
+export function* fetchReposRequest() {
   const requestURL = `${API_URL}/repos`
   try {
     const response = yield call(request, requestURL, {

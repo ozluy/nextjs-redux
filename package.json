@@ -21,12 +21,23 @@
     "styled-components": "^3.2.1",
     "whatwg-fetch": "^2.0.3"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@strv/eslint-config-javascript": "^7.10.0",
+    "babel-eslint": "^8.2.2",
+    "eslint": "^4.18.2",
+    "husky": "^0.14.3",
+    "lint-staged": "^7.0.0"
+  },
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "precommit": "lint-staged"
   },
+  "lint-staged": {
+    "*.js": ["eslint --fix", "git add"]
+  },
+  "moduleDirectories": ["node_modules", "app"],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ozluy/play-with-nextjs.git"

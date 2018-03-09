@@ -7,38 +7,34 @@ import { fromJS } from 'immutable'
 import createSagaMiddleware from 'redux-saga'
 import createReducer from './reducers'
 import appSaga from 'data/app/sagas'
+
 const sagaMiddleware = createSagaMiddleware()
 
+/* eslint-disable */
 export default function configureStore(initialState = {}) {
   // Create the store with two middlewares
   // 1. sagaMiddleware: Makes redux-sagas work
   // 2. routerMiddleware: Syncs the location/URL path to the state
-  const middlewares = [
-    sagaMiddleware
-  ]
+  const middlewares = [sagaMiddleware]
 
-  const enhancers = [
-    applyMiddleware(...middlewares),
-  ]
+  const enhancers = [applyMiddleware(...middlewares)]
 
   // If Redux DevTools Extension is installed use it, otherwise use Redux compose
-  /* eslint-disable no-underscore-dangle */
   const composeEnhancers =
     process.env.NODE_ENV !== 'production' &&
     typeof window === 'object' &&
     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
       ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
-        // TODO Try to remove when `react-router-redux` is out of beta, LOCATION_CHANGE should not be fired more than once after hot reloading
-        // Prevent recomputing reducers for `replaceReducer`
-        shouldHotReload: false,
-      })
+          // TODO Try to remove when `react-router-redux` is out of beta, LOCATION_CHANGE should not be fired more than once after hot reloading
+          // Prevent recomputing reducers for `replaceReducer`
+          shouldHotReload: false,
+        })
       : compose
-  /* eslint-enable */
 
   const store = createStore(
     createReducer(),
     fromJS(initialState),
-    composeEnhancers(...enhancers)
+    composeEnhancers(...enhancers),
   )
 
   // Extensions
@@ -49,8 +45,8 @@ export default function configureStore(initialState = {}) {
   /* istanbul ignore next */
   if (module.hot) {
     module.hot.accept('./reducers', () => {
-        const nextRootReducer = require('./reducers');
-        store.replaceReducer(nextRootReducer);
+      const nextRootReducer = require('./reducers')
+      store.replaceReducer(nextRootReducer)
     })
   }
 
