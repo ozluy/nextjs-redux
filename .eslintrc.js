@@ -5,7 +5,6 @@
 module.exports = {
   extends: [
     '@strv/javascript/environments/react/v16',
-    '@strv/javascript/environments/react/optional',
     '@strv/javascript/coding-styles/recommended',
   ],
   "settings": {

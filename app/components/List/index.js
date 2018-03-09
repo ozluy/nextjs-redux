@@ -1,12 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-
-export const List = styled.div`
-  background-color: #fafafa;
-  width: 65%;
-  margin: 0 auto;
-  min-width: 300px
-`
+import PropTypes from 'prop-types'
 
 const StyledListItem = styled.div`
   border: solid 1px rgba(0, 0, 0, 0.2);
@@ -26,9 +20,22 @@ const Description = styled.div`
   font-size: 16px;
 `
 
-export const ListItem = props => (
+const List = styled.div`
+  background-color: #fafafa;
+  width: 65%;
+  margin: 0 auto;
+  min-width: 300px;
+`
+
+const ListItem = props => (
   <StyledListItem {...props}>
     <Title>{props.repo.name}</Title>
     <Description>{props.repo.description}</Description>
   </StyledListItem>
 )
+
+ListItem.propTypes = {
+  repo: PropTypes.object.isRequired,
+}
+
+export { List, ListItem }
