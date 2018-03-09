@@ -3,8 +3,8 @@ import { fetchReposSuccess, fetchReposFail } from './actions'
 import { API_URL, FETCH_REPOS } from './constants'
 import request from 'common/request'
 
-export function* fetchReposRequest() {
-  const requestURL = `${API_URL}/repos`
+export function* fetchReposRequest(action) {
+  const requestURL = `${API_URL}/${action.payload}/repos`
   try {
     const response = yield call(request, requestURL, {
       method: 'GET',

@@ -5,8 +5,11 @@
   "main": "index.js",
   "dependencies": {
     "babel-plugin-styled-components": "^1.5.1",
+    "es6-promise": "^4.2.4",
+    "formik": "^0.11.11",
     "history": "^4.7.2",
     "immutable": "^3.8.2",
+    "isomorphic-fetch": "^2.2.1",
     "next": "^5.0.0",
     "prop-types": "^15.6.1",
     "ramda": "^0.25.0",
@@ -20,7 +23,8 @@
     "redux-saga": "^0.16.0",
     "reselect": "^3.0.1",
     "styled-components": "^3.2.1",
-    "whatwg-fetch": "^2.0.3"
+    "whatwg-fetch": "^2.0.3",
+    "yup": "^0.24.1"
   },
   "devDependencies": {
     "@strv/eslint-config-javascript": "^7.10.0",

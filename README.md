@@ -14,3 +14,5 @@
 - Precommit - Lint staged
 - Eslint
 - StyleLint
+- Styled Components
+- Formik(better than ReduxForm) with Yup(validations)

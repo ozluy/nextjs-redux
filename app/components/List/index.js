@@ -21,9 +21,6 @@ const Description = styled.div`
 `
 
 const List = styled.div`
-  background-color: #fafafa;
-  width: 65%;
-  margin: 0 auto;
   min-width: 300px;
 `
 

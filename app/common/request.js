@@ -1,3 +1,4 @@
+import 'isomorphic-fetch'
 import 'whatwg-fetch'
 
 function parseJSON(response) {

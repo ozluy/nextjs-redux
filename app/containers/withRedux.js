@@ -5,7 +5,7 @@ import { fetchRepos } from 'data/app/actions'
 
 const initialState = {}
 const store = configureStore(initialState)
-store.dispatch(fetchRepos())
+store.dispatch(fetchRepos('ozluy'))
 const withStore = Component => () => (
   <Provider store={store}>
     <Component {...this.props} />

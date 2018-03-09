@@ -2,7 +2,7 @@ import { assoc, merge } from 'ramda'
 import { FETCH_REPOS, FETCH_REPOS_SUCCESS, FETCH_REPOS_FAIL } from './constants'
 
 const initialState = {
-  repos: [],
+  repos: null,
   loading: false,
   error: null,
 }
@@ -15,7 +15,7 @@ export default function createReducer(state = initialState, action) {
       return merge(state, {
         repos: action.payload,
         loading: false,
-        error: null,        
+        error: null,
       })
     case FETCH_REPOS_FAIL:
       return merge(state, {
