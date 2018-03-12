@@ -15,8 +15,10 @@ module.exports = {
       : modules
 
     // fixme: IMPORTANT!!! remove following line before launching
-    config.devtool = 'inline-source-map'
-
+    const dev = process.env.NODE_ENV !== 'prod'
+    if (dev) {
+      config.devtool = 'inline-source-map'
+    }
     return config
   },
 }
