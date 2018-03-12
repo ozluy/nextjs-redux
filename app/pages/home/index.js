@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { fetchRepos } from 'data/home/actions'
 import { pure, compose, lifecycle } from 'recompose'
 import {
-  selectRepos,
+  selectOrderedRepos,
   selectReposError,
   selectReposLoading,
 } from 'data/home/selectors'
@@ -34,6 +34,20 @@ const Wrapper = styled.div`
 const Title = styled.h1`
   text-align: center;
   color: green;
+`
+const UserLink = styled.a`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: red;
+  img {
+    padding: 25px;
+  }
+  span {
+    font-size: 24px;
+    padding: 25px;
+  }
 `
 
 const HomePage = ({ repos, error, loading, getRepos }) => (
@@ -83,9 +97,21 @@ const HomePage = ({ repos, error, loading, getRepos }) => (
       && repos.length < 1
         && <Message color="grey">This user is quite lazy!</Message>
     }
-    <List>
-      {repos && repos.map(repo => <ListItem key={repo.id} repo={repo} />)}
-    </List>
+    {repos
+      && repos.length > 0 && (
+        <div>
+          <UserLink target="_blank" href={repos[0].owner.html_url}>
+            <img
+              src={`${repos[0].owner.avatar_url}&s=100`}
+              alt={repos[0].owner.login}
+            />
+            <span>@{repos[0].owner.login}</span>
+          </UserLink>
+          <List>
+            {repos.map(repo => <ListItem key={repo.id} repo={repo} />)}
+          </List>
+        </div>
+      )}
     {error && <Message>{error.message}</Message>}
   </Wrapper>
 )
@@ -105,7 +131,7 @@ HomePage.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    repos: selectRepos(state),
+    repos: selectOrderedRepos(state),
     loading: selectReposLoading(state),
     error: selectReposError(state),
   }

@@ -1,4 +1,3 @@
-
 import React from 'react'
 import Document, { Head, Main, NextScript } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
@@ -21,6 +20,12 @@ class CustomDocument extends Document {
       <html lang="en">
         <Head>
           <title>Playing with NextJS</title>
+          <meta charSet="utf-8" />
+          <meta name="description" content="That's it!" />
+          <meta
+            name="viewport"
+            content="initial-scale=1.0, width=device-width"
+          />
           {this.props.styleTags}
         </Head>
         <body>
