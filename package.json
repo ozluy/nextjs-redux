@@ -38,6 +38,7 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
+    "prod": "npm run build && npm run start",
     "precommit": "lint-staged"
   },
   "lint-staged": {
