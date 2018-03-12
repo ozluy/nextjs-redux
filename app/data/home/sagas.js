@@ -10,11 +10,7 @@ export function* fetchReposRequest(action) {
       method: 'GET',
     })
     if (response) {
-      let repos = null
-      yield response.json().then(result => {
-        repos = result
-      })
-      yield put(fetchReposSuccess(repos))
+      yield put(fetchReposSuccess(response))
     }
   } catch (err) {
     yield put(fetchReposFail(err))

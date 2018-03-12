@@ -1,13 +1,13 @@
 import React from 'react'
 import withRedux from 'containers/withRedux'
 import { connect } from 'react-redux'
-import { fetchRepos } from 'data/app/actions'
-import { pure, compose } from 'recompose'
+import { fetchRepos } from 'data/home/actions'
+import { pure, compose, lifecycle } from 'recompose'
 import {
   selectRepos,
   selectReposError,
   selectReposLoading,
-} from 'data/app/selectors'
+} from 'data/home/selectors'
 import { List, ListItem } from 'components/List'
 import styled from 'styled-components'
 import Form from 'components/Form'
@@ -17,6 +17,10 @@ import Message from 'components/Message'
 import PropTypes from 'prop-types'
 import { Formik } from 'formik'
 import Yup from 'yup'
+import reducer from 'data/home/reducer'
+import saga from 'data/home/sagas'
+import injectReducer from 'common/injectReducer'
+import injectSaga from 'common/injectSaga'
 
 const Wrapper = styled.div`
   background-color: #fff;
@@ -110,10 +114,20 @@ function mapStateToProps(state) {
 const mapDispatchToProps = {
   getRepos: fetchRepos,
 }
+const withReducer = injectReducer({ key: 'home', reducer })
+const withSaga = injectSaga({ key: 'home', saga })
+const withConnect = connect(mapStateToProps, mapDispatchToProps)
 
 const enhance = compose(
   withRedux,
-  connect(mapStateToProps, mapDispatchToProps),
+  withReducer,
+  withSaga,
+  withConnect,
+  lifecycle({
+    componentWillMount() {
+      this.props.getRepos('ozluy')
+    },
+  }),
   pure,
 )
 

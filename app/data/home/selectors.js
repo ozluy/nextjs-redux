@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect'
 
-const base = state => state.get('app')
+const base = state => state.get('home')
 
 export const selectRepos = createSelector(base, state => state.repos)
 

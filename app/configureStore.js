@@ -6,7 +6,6 @@ import { createStore, applyMiddleware, compose } from 'redux'
 import { fromJS } from 'immutable'
 import createSagaMiddleware from 'redux-saga'
 import createReducer from './reducers'
-import appSaga from 'data/app/sagas'
 
 const sagaMiddleware = createSagaMiddleware()
 
@@ -38,15 +37,15 @@ export default function configureStore(initialState = {}) {
   )
 
   // Extensions
-  sagaMiddleware.run(appSaga)
-  store.runSaga = sagaMiddleware.run
+  store.runSaga = sagaMiddleware.run;
+  store.injectedReducers = {}; // Reducer registry
+  store.injectedSagas = {}; // Saga registry
 
   // Make reducers hot reloadable, see http://mxs.is/googmo
   /* istanbul ignore next */
   if (module.hot) {
     module.hot.accept('./reducers', () => {
-      const nextRootReducer = require('./reducers')
-      store.replaceReducer(nextRootReducer)
+      store.replaceReducer(createReducer(store.injectedReducers))
     })
   }
 

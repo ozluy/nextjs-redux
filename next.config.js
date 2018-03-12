@@ -1,10 +1,27 @@
 /* eslint-disable */
 
 const webpack = require('webpack')
+const dev = process.env.NODE_ENV !== 'prod'
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
+  .BundleAnalyzerPlugin
 
 module.exports = {
   webpack: config => {
-    config.plugins = config.plugins.concat([new webpack.NamedModulesPlugin()])
+    if (!dev) {
+      config.plugins = config.plugins.concat([
+        new webpack.NamedModulesPlugin(),
+        new BundleAnalyzerPlugin({
+          analyzerMode: 'static',
+          openAnalyzer: false,
+          reportFilename: 'bundleAnalyzerReport.html',
+          defaultSizes: 'gzip',
+        }),
+      ])
+    }
+    if (dev) {
+      config.plugins = config.plugins.concat([new webpack.NamedModulesPlugin()])
+    }
+
     if (!config.resolve) {
       config.resolve = {}
     }
@@ -15,7 +32,6 @@ module.exports = {
       : modules
 
     // fixme: IMPORTANT!!! remove following line before launching
-    const dev = process.env.NODE_ENV !== 'prod'
     if (dev) {
       config.devtool = 'inline-source-map'
     }

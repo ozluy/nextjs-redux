@@ -18,6 +18,7 @@
 - Reselect
 - Recompose
 - Ramda
+- Lodash
 - Precommit - Lint staged
 - Eslint
 - StyleLint
