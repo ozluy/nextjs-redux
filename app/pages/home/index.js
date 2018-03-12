@@ -43,6 +43,8 @@ const UserLink = styled.a`
   color: red;
   img {
     padding: 25px;
+    width: 150px;
+    height: 150px;
   }
   span {
     font-size: 24px;
