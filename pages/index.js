@@ -1,3 +1,3 @@
-import Index from '../app/pages/home';
+import Index from '../app/pages/home'
 
-export default Index;
+export default Index

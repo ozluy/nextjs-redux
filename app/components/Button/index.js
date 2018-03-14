@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 const Button = styled.button`
   width: 50%;
@@ -11,6 +11,6 @@ const Button = styled.button`
   background-color: #995555;
   color: #fff;
   outline: none;
-`;
+`
 
-export default Button;
+export default Button
