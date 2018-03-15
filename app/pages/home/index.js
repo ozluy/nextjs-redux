@@ -116,7 +116,6 @@ const HomePage = ({ repos, error, loading, getRepos }) => (
         </div>
       )}
     {error && <Message>{error.message}</Message>}
-    <p>Yusuf's code</p>
   </Wrapper>
 )
 
