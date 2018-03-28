@@ -8,7 +8,7 @@ const Button = styled.button`
   text-transform: uppercase;
   height: 51px;
   border: none;
-  background-color: #995555;
+  background-color: #955;
   color: #fff;
   outline: none;
 `

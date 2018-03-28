@@ -89,19 +89,19 @@ const HomePage = ({ repos, error, loading, getRepos }) => (
           <Button disabled={isSubmitting || loading} type="submit">
             fetch repos
           </Button>
-          {errors.username
-            && touched.username && <Message>{errors.username}</Message>}
+          {errors.username &&
+            touched.username && <Message>{errors.username}</Message>}
         </Form>
       )}
     />
     {loading && <Message color="green">Loading repos</Message>}
-    {!error
-      && repos
-      && repos.length < 1
-        && <Message color="grey">This user is quite lazy!</Message>
-    }
-    {repos
-      && repos.length > 0 && (
+    {!error &&
+      repos &&
+      repos.length < 1 && (
+        <Message color="grey">This user is quite lazy!</Message>
+      )}
+    {repos &&
+      repos.length > 0 && (
         <div>
           <UserLink target="_blank" href={repos[0].owner.html_url}>
             <img
@@ -157,7 +157,7 @@ const enhance = compose(
       this.props.getRepos('ozluy')
     },
   }),
-  pure,
+  pure
 )
 
 export default enhance(HomePage)

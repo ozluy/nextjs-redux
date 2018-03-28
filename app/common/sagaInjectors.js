@@ -11,7 +11,7 @@ const allowedModes = [RESTART_ON_REMOUNT, DAEMON, ONCE_TILL_UNMOUNT]
 const checkKey = key =>
   invariant(
     isString(key) && !isEmpty(key),
-    '(app/common...) injectSaga: Expected `key` to be a non empty string',
+    '(app/common...) injectSaga: Expected `key` to be a non empty string'
   )
 
 const checkDescriptor = descriptor => {
@@ -21,7 +21,7 @@ const checkDescriptor = descriptor => {
   }
   invariant(
     conformsTo(descriptor, shape),
-    '(app/common...) injectSaga: Expected a valid saga descriptor',
+    '(app/common...) injectSaga: Expected a valid saga descriptor'
   )
 }
 /* eslint-disable*/
