@@ -22,5 +22,6 @@
 - Precommit - Lint staged
 - Eslint
 - StyleLint
+- Prettier
 - Styled Components
 - Formik(better than ReduxForm) with Yup(validations)
