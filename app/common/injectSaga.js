@@ -16,7 +16,6 @@ import getInjectors from './sagaInjectors'
  *
  */
 
-
 export default ({ key, saga, mode }) => WrappedComponent => {
   class InjectSaga extends React.Component {
     static WrappedComponent = WrappedComponent

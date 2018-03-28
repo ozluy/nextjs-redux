@@ -6,13 +6,14 @@ module.exports = {
   extends: [
     '@strv/javascript/environments/react/v16',
     '@strv/javascript/coding-styles/recommended',
+    'prettier',
   ],
-  "settings": {
-    "import/resolver": {
-      "node": {
-        "paths": ["app"]
-      }
-    }
+  settings: {
+    'import/resolver': {
+      node: {
+        paths: ['app'],
+      },
+    },
   },
-  "parser": "babel-eslint",
+  parser: 'babel-eslint',
 }
